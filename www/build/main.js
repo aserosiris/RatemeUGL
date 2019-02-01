@@ -22,15 +22,15 @@ webpackEmptyAsyncContext.id = 117;
 
 var map = {
 	"../pages/carrito-vt/carrito-vt.module": [
-		303,
+		301,
 		13
 	],
 	"../pages/clientes/clientes.module": [
-		301,
+		302,
 		12
 	],
 	"../pages/companies/companies.module": [
-		302,
+		303,
 		11
 	],
 	"../pages/create-cliente/create-cliente.module": [
@@ -38,19 +38,19 @@ var map = {
 		10
 	],
 	"../pages/createcompany/createcompany.module": [
-		306,
+		305,
 		9
 	],
 	"../pages/createproducto/createproducto.module": [
-		305,
+		306,
 		8
 	],
 	"../pages/descarga-listas/descarga-listas.module": [
-		308,
+		307,
 		7
 	],
 	"../pages/home/home.module": [
-		307,
+		308,
 		6
 	],
 	"../pages/login/login.module": [
@@ -1195,14 +1195,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6_angular_svg_round_progressbar__["RoundProgressModule"],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* MyApp */], {}, {
                     links: [
+                        { loadChildren: '../pages/carrito-vt/carrito-vt.module#CarritoVtPageModule', name: 'CarritoVtPage', segment: 'carrito-vt', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/clientes/clientes.module#ClientesPageModule', name: 'ClientesPage', segment: 'clientes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/companies/companies.module#CompaniesPageModule', name: 'CompaniesPage', segment: 'companies', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/carrito-vt/carrito-vt.module#CarritoVtPageModule', name: 'CarritoVtPage', segment: 'carrito-vt', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/create-cliente/create-cliente.module#CreateClientePageModule', name: 'CreateClientePage', segment: 'create-cliente', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/createproducto/createproducto.module#CreateproductoPageModule', name: 'CreateproductoPage', segment: 'createproducto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/createcompany/createcompany.module#CreatecompanyPageModule', name: 'CreatecompanyPage', segment: 'createcompany', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/createproducto/createproducto.module#CreateproductoPageModule', name: 'CreateproductoPage', segment: 'createproducto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/descarga-listas/descarga-listas.module#DescargaListasPageModule', name: 'DescargaListasPage', segment: 'descarga-listas', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modal-promos/modal-promos.module#ModalPromosPageModule', name: 'ModalPromosPage', segment: 'modal-promos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/printer-list-modal/printer-list-modal.module#PrinterListModalPageModule', name: 'PrinterListModalPage', segment: 'printer-list-modal', priority: 'low', defaultHistory: [] },
