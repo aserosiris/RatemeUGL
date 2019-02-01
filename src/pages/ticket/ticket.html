@@ -1,0 +1,75 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Verificar Ticket de Venta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+<ion-item>
+<p> UNION DE GANADEROS LECHEROS </p>
+<p> DE JUAREZ SA DE CV </p>
+<p> UGL870209DL0 </p>
+<p> RAMON RAYON #1351, WATERFILL</p>
+<p> RIO BRAVO, CD. JUAREZ, CHIH.</p>
+<p> C.P. 32553</p>
+<p>. </p>
+<p> NOTA DE VENTA ORIGINAL</p>
+<p>. </p>
+<p> RUTA:{{rutamail}} </p>
+<p> FOLIO:</p>
+<p> FECHA: {{today | date: 'dd/MM/yyyy H:mm'}}</p>
+<p> TIPO DE VENTA:{{tipoVentaCliente}} </p>
+<p>. </p>
+<p> <b># CLIENTE: {{cliente.CL_CLIENTE}}</b></p>
+<p> {{cliente.CL_NOMNEGOCIO}}   </p> 
+<p> {{cliente.CL_PUNTOVENTA}}</p>
+<p> {{cliente.CL_RFC}} </p>
+<p> {{cliente.CL_DIRNEGOCIO}} </p>
+<p> {{cliente.CL_COLNEGOCIO}} </p>
+<p> {{cliente.CL_CIUDADNEGOCIO}} C.P. {{cliente.CL_CPCLIE}} </p>
+<p> CORPORACION:{{cliente.CL_CORPORACION}} </p>
+========================================
+<p>CLAVE   PRODUCTO</p> 
+
+    <!--Codigo de lista de claves en venta-->
+ <ion-grid>
+<ion-list *ngFor= "let cve of clavesVta">
+<ion-row>
+  <ion-col>
+========================================
+<p><b> {{cve.clave}}  {{cve.nombre}}</b></p> 
+<p> Cant: {{cve.cantidad}}   Precio:${{cve.precio| number:'1.2-2'}}</p>
+<p> IVA:${{cve.iva| number:'1.2-2'}}   IEPS:${{cve.ieps| number:'1.2-2'}}</p>
+<p> Importe:${{cve.importe| number:'1.2-2'}}</p>
+</ion-col>
+</ion-row>
+</ion-list>
+</ion-grid>
+ ========================================
+<p> <b>Subtotal:</b>${{subtotalVta| number:'1.2-2'}}</p>
+<p> <b>IVA:</b>${{IVAVta| number:'1.2-2'}}</p>
+<p> <b>IEPSVta</b>S:${{IEPSVta| number:'1.2-2'}}</p>
+<p> <b>Reconocimiento</b>:${{reconocimientoVta| number:'1.2-2'}}</p>
+<p> <b>Total a Pagar:</b>${{totalFinal| number:'1.2-2'}}</p>
+<p>. </p>
+========================================
+<p> <b>KILOLITROS VENDIDOS:</b>{{KLAcumVta| number:'1.3-3'}}</p>
+========================================
+<p>. </p>
+<p> ATENDIDO POR: 0000</p>
+<p> AQUI NOMBRE DEL EMPLEADO</p>
+<p>. </p>
+
+
+
+
+<ion-item>
+  <button color="primary" ion-item (tap)="showPrompt()">
+    FINALIZAR VENTA
+  </button>
+</ion-item>
+</ion-item>
+</ion-content>

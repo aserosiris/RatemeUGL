@@ -1,0 +1,4 @@
+#Thu Jan 31 18:32:20 MST 2019
+base.0=D\:\\Documents\\Ionic\\LucernaHH\\Rateme-master\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
