@@ -85,6 +85,7 @@
     <plugin name="cordova-sqlite-storage" spec="^2.6.0" />
     <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
     <plugin name="cordova-plugin-bluetooth-serial" spec="0.4.7" />
+    <plugin name="uk.co.workingedge.cordova.plugin.sqliteporter" spec="1.1.0" />
     <engine name="android" spec="7.1.4" />
     <engine name="ios" spec="4.5.5" />
 </widget>

@@ -6,7 +6,7 @@ import { TbHhUsuariosProvider } from './../../providers/tb-hh-usuarios/tb-hh-usu
 import { RutaProvider } from './../../providers/ruta/ruta';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController,LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController,LoadingController, ViewController, AlertController } from 'ionic-angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { ClienteProvider } from './../../providers/cliente/cliente';
 import { ProductoProvider } from './../../providers/producto/producto';
@@ -14,8 +14,9 @@ import { PrecioProvider } from './../../providers/precio/precio';
 import { PrecioClienteProvider } from './../../providers/precio-cliente/precio-cliente';
 import { Storage } from '@ionic/storage';
 import { Subscriber } from 'rxjs/Subscriber';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { THIS_EXPR, STRING_TYPE } from '@angular/compiler/src/output/output_ast';
 import { daysInMonth } from 'ionic-angular/umd/util/datetime-util';
+
 
 
 
@@ -32,7 +33,7 @@ export class DescargaListasPage {
   loading: any;
   rutamail
   
-
+  consulta:string;
   clientes = [];
   clientesSQL: any = [];
 
@@ -69,6 +70,14 @@ export class DescargaListasPage {
 
   rutaStr='';
 
+  objeto: any;
+
+  asistencias:any;
+  nombresVendedores: any=[];
+  consulta2: string;
+  db: SQLiteObject; // ADDED
+  numReloj
+  datos =[]
 
 
   constructor(public navCtrl: NavController,
@@ -87,22 +96,43 @@ export class DescargaListasPage {
     private revolventes: RevolventesProvider,
     private arreglosJSON: ArregloProvider,
     private cargaInicial: CargaInicialProvider,
-    private promosiones: PromosProvider) {
+    private view: ViewController,
+    private promosiones: PromosProvider,
+   ) {
 
+
+
+
+      this.clientes = this.navParams.get('clientes');
+      this.productos = this.navParams.get('productos');
+      this.precios = this.navParams.get('precios');
+      this.precioCliente = this.navParams.get('precioCliente');
+      this.ruta = this.navParams.get('ruta')
+      this.tb_hh_usuarios = this.navParams.get('tb_hh_usuarios');
+      this.tb_hh_revolventes = this.navParams.get('tb_hh_revolventes');
+      this.arreglos = this.navParams.get('arreglos');
+      this.cargasIniciales = this.navParams.get('cargasIniciales');
+      this.promos = this.navParams.get('promos');
       
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DescargaListasPage');
+    //this.getData()
+    this.getAsistencia();   
+    
   }
 
   ionViewDidEnter(){
-   this.getJSON();
+   //this.getJSON();
+  
+   
   }
 
   ionViewWillEnter(){
     this.obtenerRuta();
   }
+ 
 
   showLoading(){
     
@@ -119,14 +149,20 @@ export class DescargaListasPage {
       this.rutamail = parseInt(val);
       console.log(this.rutamail)
 
-      
+
+        
     this.rutaStr=this.rutamail.toString(); //la manda a una variable string para formar el folio de la ruta
+    this.Storage.get('asistencia').then((val) =>{
+      this.asistencias =val;
+    })
     })
   }
 
   async doSQL(){
     try{
   await this.getData();
+  
+  this.getusuarios();
   //await this.showLoading();
   await this.navCtrl.setRoot("HomePage", {email: this.rutamail});
 
@@ -142,66 +178,95 @@ export class DescargaListasPage {
     }
   }
 
-  async getJSON(){
-    try{
-    const cliePromise = this.cliente.getClientes().subscribe(res =>{
-      console.log(res);
-      this.clientes = res.result;});
-
-    const prodPromise = this.producto.getProductos().subscribe(res =>{
-      console.log(res);
-      this.productos = res.result;});
-
-     const precioPromise =  this.precioCtrl.getPrecios().subscribe(res =>{
-      console.log(res);
-      this.precios = res.result;});
-
-     const precliePromise = this.precioClientes.getPrecioClientes().subscribe(res =>{
-      console.log(res);
-      this.precioCliente = res.result;});
-
-      const rutaPromise =   this.rutaProvider.getRutas().subscribe(res =>{
-        console.log(res);
-        this.ruta = res.result;});
-
-      const vendedoresPromise = this.TbUsuarios.getUsuarios().subscribe(res =>{
-        console.log(res);
-        this.tb_hh_usuarios = res.result;});
-
-      const revolver = this.revolventes.getRevolventes().subscribe(res =>{
-        console.log(res);
-        this.tb_hh_revolventes = res.result;});
-     
-      const arregloPromise = this.arreglosJSON.getArreglo().subscribe(res =>{
-        console.log(res);
-        this.arreglos = res.result;});
-
-      const cargaPromise = this.cargaInicial.getCargaInicial().subscribe(res =>{
-          console.log(res);
-          this.cargasIniciales = res.result;});
-
-      const PromoPromise = this.promosiones.getPromos().subscribe(res =>{
-            console.log(res);
-            this.promos = res.result;});
+  getAsistencia(){
+    //return new Promise(function(resolve, reject)
+     this.sqlite.create({
+       name: 'ionicdb.db',
+       location: 'default'
+     }).then((db: SQLiteObject) => {
+       this.db = db;
+       
+      db.executeSql('CREATE TABLE IF NOT EXISTS tb_hh_asistencia(AS_RUTA INT,AS_FECHA DATE, AS_NUMERO_VENDEDOR INT, AS_NOMBRE_VENDEDOR TEXT, AS_NUMERO_AYUDANTE INT, AS_NOMBRE_AYUDANTE TEXT, AS_NUMERO_AYUDANTE2 INT, AS_NOMBRE_AYUDANTE2 TEXT )', [])
+      .then(res => console.log('Executed SQL'))
+      .catch(e => console.log(e));
+      db.executeSql('CREATE TABLE IF NOT EXISTS tb_hh_usuarios(EM_NUMERO INT, EM_NOMBRE TEXT, EM_SUCURSAL INT, EM_EMPRESA INT)', [])
+      .then(res => console.log('Executed SQL'))
+      .catch(e => console.log(e));
       
-
-      await Promise.all([cliePromise,prodPromise,precioPromise,precliePromise,rutaPromise,
-        vendedoresPromise,revolver,arregloPromise,cargaPromise,PromoPromise]);
-     }catch(error){
-
-      if(error){
-        let alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: error,
-          buttons: ['Ok']
+      for(var i = 0; i<this.tb_hh_usuarios.length; i++){
+        console.log("primer parte jala chida")
+  
+        var EM_NUMERO = this.tb_hh_usuarios[i].EM_NUMERO;
+        var EM_NOMBRE = this.tb_hh_usuarios[i].EM_NOMBRE;
+        var EM_SUCURSAL = this.tb_hh_usuarios[i].EM_SUCURSAL;
+        var EM_EMPRESA = this.tb_hh_usuarios[i].EM_EMPRESA;
+        var query6 = "INSERT INTO tb_hh_usuarios(EM_NUMERO, EM_NOMBRE, EM_SUCURSAL, EM_EMPRESA) VALUES (?,?,?,?)"
+     db.executeSql(query6, [EM_NUMERO, EM_NOMBRE, EM_SUCURSAL, EM_EMPRESA]).then(function(res) {
+        }, function (err) {
+          console.error(err);
+          //this.presentToast(err)
         });
-        alert.present();
       }
-  }
+
+   })
+   
+   }
+
+   getusuarios(){
+    this.sqlite.create({
+      name: 'ionicdb.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+
+      console.log(this.asistencias[0])
+      var sql = `SELECT EM_NUMERO, EM_NOMBRE FROM tb_hh_usuarios WHERE EM_NUMERO =?`
+       return this.db.executeSql(sql,[this.asistencias[0]])
+      
+      })
+     .then(res =>{
+       console.log(res.rows.item(0).EM_NOMBRE)
+      this.nombresVendedores[0] ={EM_NOMBRE: res.rows.item(0).EM_NOMBRE,EM_NUMERO:res.rows.item(0).EM_NUMERO} 
+      var sql = `SELECT EM_NUMERO, EM_NOMBRE FROM tb_hh_usuarios WHERE EM_NUMERO =?`
+       return this.db.executeSql(sql,[this.asistencias[1]])
+       
+     }).then(res1 =>{
+      console.log(res1.rows.item(0).EM_NOMBRE)
+      this.nombresVendedores[1]={EM_NOMBRE: res1.rows.item(0).EM_NOMBRE,EM_NUMERO:res1.rows.item(0).EM_NUMERO}
+      var sql = `SELECT EM_NUMERO, EM_NOMBRE FROM tb_hh_usuarios WHERE EM_NUMERO =?`
+       return this.db.executeSql(sql,[this.asistencias[2]])
+     }).then(res2 =>{
+      this.nombresVendedores[2]={EM_NOMBRE: res2.rows.item(0).EM_NOMBRE,EM_NUMERO:res2.rows.item(0).EM_NUMERO}
+      console.log(this.nombresVendedores)
+      this.consulta2 = `INSERT  INTO tb_hh_asistencia  (AS_RUTA,AS_FECHA, AS_NUMERO_VENDEDOR, AS_NOMBRE_VENDEDOR, AS_NUMERO_AYUDANTE, AS_NOMBRE_AYUDANTE, AS_NUMERO_AYUDANTE2, AS_NOMBRE_AYUDANTE2) VALUES (?,?,?,?,?,?,?,?)  `
+      this.db.executeSql(this.consulta2,[this.rutamail,Date(),this.nombresVendedores[0].EM_NUMERO,this.nombresVendedores[0].EM_NOMBRE,this.nombresVendedores[1].EM_NUMERO,this.nombresVendedores[1].EM_NOMBRE,this.nombresVendedores[2].EM_NUMERO,this.nombresVendedores[2].EM_NOMBRE])
+      .catch(e => console.log("las cosas se fuero a la shit aqui"));
+     })
+  
+  //}
+
+}
+
+ //this.insertAssist();
+  // }
+
+
+
+
+
+insertAssist(){
+  this.sqlite.create({
+    name: 'ionicdb.db',
+    location: 'default'
+  }).then((db: SQLiteObject) => {
+    this.consulta2 = `INSERT  INTO tb_hh_asistencia  (AS_RUTA,AS_FECHA, AS_NUMERO_VENDEDOR, AS_NOMBRE_VENDEDOR, AS_NUMERO_AYUDANTE, AS_NOMBRE_AYUDANTE, AS_NUMERO_AYUDANTE2, AS_NOMBRE_AYUDANTE2) VALUES (?,?,?,?,?,?,?,?)  `
+    db.executeSql(this.consulta2,[this.rutamail,Date(),this.nombresVendedores[0].EM_NOMBRE,this.nombresVendedores[0].EM_NUMERO,this.nombresVendedores[1].EM_NOMBRE,this.nombresVendedores[1].EM_NUMERO,this.nombresVendedores[2].EM_NOMBRE,this.nombresVendedores[2].EM_NUMERO,])
+    .catch(e => console.log("las cosas se fuero a la shit aqui"));
+  })
+
 }
 
 
-  getData() {
+  getData(){
    // this.showLoading();
   
     this.sqlite.create({
@@ -223,9 +288,6 @@ export class DescargaListasPage {
       db.executeSql('CREATE TABLE IF NOT EXISTS tb_hh_rutas(RT_RUTA INT, RT_NOMBRE TEXT, RT_TIPOPRECIO INT, RT_IDENTIFICADOR_EQUIPO INT, RT_SUCURSAL INT, RT_EMPRESA INT)', [])
       .then(res => console.log('Executed SQL'))
       .catch(e => console.log(e));
-      db.executeSql('CREATE TABLE IF NOT EXISTS tb_hh_usuarios(EM_NUMERO INT, EM_NOMBRE TEXT, EM_SUCURSAL INT, EM_EMPRESA INT)', [])
-      .then(res => console.log('Executed SQL'))
-      .catch(e => console.log(e));
       db.executeSql('CREATE TABLE IF NOT EXISTS tb_hh_revolventes(RV_CLIENTE INT, RV_NOM_CLIENTE TEXT, RV_RUTA INT, RV_FECHA_NOTA DATE,RV_NOTA_REVOLVENTE TEXT,RV_TOTAL_NOTA REAL, RV_IVA_NOTA REAL, RV_IEPS_NOTA REAL, RV_SUCURSAL INT, RV_EMPRESA INT )', [])
       .then(res => console.log('Executed SQL'))
       .catch(e => console.log(e));
@@ -241,13 +303,10 @@ export class DescargaListasPage {
       db.executeSql('CREATE TABLE IF NOT EXISTS tb_hh_inventario(IN_RUTA INT, IN_CLAVE INT, IN_GRUPO INT, IN_CANTIDAD INT,IN_TIPO_MOV INT,IN_USUARIO_REGISTRO INT, IN_SUCURSAL INT, IN_EMPRESA INT )', [])
       .then(res => console.log('Executed SQL'))
       .catch(e => console.log(e));
-
       db.executeSql('CREATE TABLE IF NOT EXISTS tb_hh_folio(FL_ULTIMO_FOLIO TEXT)', [])
       .then(res => console.log('Executed SQL'))
       .catch(e => console.log(e));
-
-
-
+      
 
 
 /*****************************insertar JSON  en SQLITE********************************** */
@@ -368,20 +427,6 @@ export class DescargaListasPage {
           }
         }
 
-
-        for(var i = 0; i<this.tb_hh_usuarios.length; i++){
-  
-            var EM_NUMERO = this.tb_hh_usuarios[i].EM_NUMERO;
-            var EM_NOMBRE = this.tb_hh_usuarios[i].EM_NOMBRE;
-            var EM_SUCURSAL = this.tb_hh_usuarios[i].EM_SUCURSAL;
-            var EM_EMPRESA = this.tb_hh_usuarios[i].EM_EMPRESA;
-            var query6 = "INSERT INTO tb_hh_usuarios(EM_NUMERO, EM_NOMBRE, EM_SUCURSAL, EM_EMPRESA) VALUES (?,?,?,?)"
-            db.executeSql(query6, [EM_NUMERO, EM_NOMBRE, EM_SUCURSAL, EM_EMPRESA]).then(function(res) {
-            }, function (err) {
-              console.error(err);
-              //this.presentToast(err)
-            });
-          }
 
 
           for(var i = 0; i<this.tb_hh_revolventes.length; i++){

@@ -28264,6 +28264,102 @@ page-home ion-content .icon-md {
   margin-left: 125px !important;
 }
 
+page-inicio-dia ion-content {
+  background: white;
+  color: #f4f4f4;
+}
+
+page-inicio-dia ion-content ion-card {
+  color: #f4f4f4;
+}
+
+page-inicio-dia ion-content .header1 {
+  text-align: center;
+  color: #73879C;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+page-inicio-dia ion-content .text-content1 {
+  text-align: center;
+  color: #73879C;
+  font-size: 20px;
+  margin-bottom: 35px;
+  margin-top: 0px;
+}
+
+page-inicio-dia ion-content .card1 {
+  border: none !important;
+  border-radius: 5%;
+  background: rgba(241, 140, 72, 0.781);
+  height: 250px;
+  margin-bottom: 20px !important;
+}
+
+page-inicio-dia ion-content .card2 {
+  border: none !important;
+  border-radius: 5%;
+  background: rgba(70, 224, 204, 0.8);
+  height: 250px;
+  margin-bottom: 20px !important;
+}
+
+page-inicio-dia ion-content .card3 {
+  border: none !important;
+  border-radius: 5%;
+  background: rgba(97, 204, 70, 0.8);
+  height: 250px;
+  margin-bottom: 30px !important;
+}
+
+page-inicio-dia ion-content .card-header {
+  color: #f4f4f4;
+  text-align: center !important;
+  font-size: 1.8em !important;
+  font-weight: 500;
+  padding-top: 0px !important;
+  padding-bottom: 10px !important;
+}
+
+page-inicio-dia ion-content .card-header-md.hello {
+  font-size: 25px !important;
+  font-weight: 900 !important;
+}
+
+page-inicio-dia ion-content .card-md p {
+  color: #f4f4f4;
+  text-align: center !important;
+  font-size: 1.7rem !important;
+  margin-bottom: 10px !important;
+}
+
+page-inicio-dia ion-content .button {
+  color: white !important;
+  width: 50%;
+  margin: 0 auto !important;
+  text-align: center !important;
+  border: 1px solid white;
+}
+
+page-inicio-dia ion-content .btn1 {
+  background: rgba(70, 224, 204, 0.8);
+}
+
+page-inicio-dia ion-content .btn2 {
+  background: rgba(97, 204, 70, 0.8);
+}
+
+page-inicio-dia ion-content .btn3 {
+  background: rgba(241, 140, 72, 0.781);
+}
+
+page-inicio-dia ion-content .icon-md {
+  font-size: 70px;
+  text-align: center !important;
+  margin-top: 10px !important;
+  margin-left: 125px !important;
+}
+
 page-login ion-content {
   background: white !important;
 }

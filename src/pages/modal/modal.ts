@@ -76,7 +76,8 @@ promoSQL: any;
       inputs: [
         {
           name:'cantidad',
-          placeholder:'#'
+          placeholder:'#',
+          type:'tel'
         },
       ],
       buttons:[

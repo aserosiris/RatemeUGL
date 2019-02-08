@@ -7,15 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite';
 import { Toast } from '@ionic-native/toast';
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
-
-
-
 import { IonicStorageModule } from '@ionic/storage';
-
-
 import { MyApp } from './app.component';
-
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RegisterProvider } from '../providers/register/register';

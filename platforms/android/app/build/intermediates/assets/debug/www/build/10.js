@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 304:
+/***/ 305:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateClientePageModule", function() { return CreateClientePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreatecompanyPageModule", function() { return CreatecompanyPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_cliente__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createcompany__ = __webpack_require__(321);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,32 +18,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CreateClientePageModule = /** @class */ (function () {
-    function CreateClientePageModule() {
+var CreatecompanyPageModule = /** @class */ (function () {
+    function CreatecompanyPageModule() {
     }
-    CreateClientePageModule = __decorate([
+    CreatecompanyPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__create_cliente__["a" /* CreateClientePage */],
+                __WEBPACK_IMPORTED_MODULE_2__createcompany__["a" /* CreatecompanyPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_cliente__["a" /* CreateClientePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__createcompany__["a" /* CreatecompanyPage */]),
             ],
         })
-    ], CreateClientePageModule);
-    return CreateClientePageModule;
+    ], CreatecompanyPageModule);
+    return CreatecompanyPageModule;
 }());
 
-//# sourceMappingURL=create-cliente.module.js.map
+//# sourceMappingURL=createcompany.module.js.map
 
 /***/ }),
 
-/***/ 319:
+/***/ 321:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateClientePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_cliente_cliente__ = __webpack_require__(205);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreatecompanyPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_nota_venta_nota_venta__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -58,29 +58,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var CreateClientePage = /** @class */ (function () {
-    function CreateClientePage(navCtrl, navParams, cliente, alertCtrl, toastCtrl) {
+var CreatecompanyPage = /** @class */ (function () {
+    function CreatecompanyPage(navCtrl, navParams, notaVenta, alertCtrl, toastCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.cliente = cliente;
+        this.notaVenta = notaVenta;
         this.alertCtrl = alertCtrl;
         this.toastCtrl = toastCtrl;
+        this.NV_FECHA = Date.now();
     }
-    CreateClientePage.prototype.ionViewDidLoad = function () {
+    CreatecompanyPage.prototype.ionViewDidLoad = function () {
     };
-    CreateClientePage.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.cliente.getUserData().subscribe(function (res) {
-            if (res.user !== null) {
-                _this.userId = res.user._id;
-            }
-        });
+    CreatecompanyPage.prototype.ionViewDidEnter = function () {
     };
-    CreateClientePage.prototype.register = function () {
+    CreatecompanyPage.prototype.register = function () {
         var _this = this;
-        this.cliente.createCliente(this.num_cliente, this.nombre_negocio, this.razon_social, this.direccion, this.colonia_negocio, this.ciudad_negocio, this.corporacion, this.ruta, this.lunes, this.martes, this.miercoles, this.juevez, this.viernes, this.sabado, this.domingo, this.estatus, this.userId)
+        this.notaVenta.createNotaVenta(this.NV_NOTA, this.NV_CLIENTE, this.NV_RAZON_SOCIAL, this.NV_NOMBRE_CLIENTE, this.NV_FECHA, this.NV_RUTA, this.NV_TIPO_VENTA, this.NV_SUBTOTAL, this.NV_IVA, this.NV_IEPS, this.NV_RECONOCIMIENTO, this.NV_TOTAL, this.NV_CORPO_CLIENTE, this.NV_ESTATUS_NOTA, this.NV_KILOLITROS_VENDIDOS)
             .subscribe(function (res) {
-            console.log(res);
             if (res.message) {
                 var toast = _this.toastCtrl.create({
                     message: res.message,
@@ -98,37 +92,35 @@ var CreateClientePage = /** @class */ (function () {
                 alert_1.present();
             }
         });
-        this.num_cliente = '';
-        this.nombre_negocio = '';
-        this.razon_social = '';
-        this.direccion = '';
-        this.colonia_negocio = '';
-        this.ciudad_negocio = '';
-        this.corporacion = '';
-        this.ruta = '';
-        this.lunes = '';
-        this.martes = '';
-        this.miercoles = '';
-        this.juevez = '';
-        this.viernes = '';
-        this.sabado = '';
-        this.domingo = '';
-        this.estatus = '';
+        this.NV_NOTA = '';
+        this.NV_CLIENTE = 0;
+        this.NV_RAZON_SOCIAL = '';
+        this.NV_NOMBRE_CLIENTE = '';
+        this.NV_RUTA = 0;
+        this.NV_TIPO_VENTA = '';
+        this.NV_SUBTOTAL = 0;
+        this.NV_IVA = 0;
+        this.NV_IEPS = 0;
+        this.NV_RECONOCIMIENTO = 0;
+        this.NV_TOTAL = 0;
+        this.NV_CORPO_CLIENTE = 0;
+        this.NV_ESTATUS_NOTA = '';
+        this.NV_KILOLITROS_VENDIDOS = 0;
     };
-    CreateClientePage = __decorate([
+    CreatecompanyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-create-cliente',template:/*ion-inline-start:"D:\Documents\Ionic\LucernaHH\Rateme-master\src\pages\create-cliente\create-cliente.html"*/'\n<ion-header>\n\n    <ion-navbar>\n      <ion-title>Capturar Cliente Nuevo</ion-title>\n    </ion-navbar>\n  \n  </ion-header>\n  \n  \n  <ion-content >\n    <div>\n      <ion-item>\n        <ion-label color ="primary" stacked>Numero Cliente</ion-label>\n        <ion-input type="text" [(ngModel)]="num_cliente"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label color ="primary" stacked>Nombre Negocio</ion-label>\n          <ion-input type="text"[(ngModel)]="nombre_negocio"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Razon Social</ion-label>\n            <ion-input type="text" [(ngModel)]="razon_social"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Direccion</ion-label>\n            <ion-input type="text" [(ngModel)]="direccion"></ion-input>\n        </ion-item>\n        <ion-item>\n             <ion-label color ="primary" stacked>Colonia Negocio</ion-label>\n             <ion-input type="text"  [(ngModel)]="colonia_negocio"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Corporacion</ion-label>\n            <ion-input type="text"  [(ngModel)]="corporacion"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Ruta</ion-label>\n            <ion-input type="text"  [(ngModel)]="ruta"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Lunes</ion-label>\n            <ion-input type="text"  [(ngModel)]="lunes"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Martes</ion-label>\n            <ion-input type="text"  [(ngModel)]="martes"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Miercoles</ion-label>\n            <ion-input type="text"  [(ngModel)]="miercoles"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Jueves</ion-label>\n            <ion-input type="text"  [(ngModel)]="juevez"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>viernes</ion-label>\n            <ion-input type="text"  [(ngModel)]="viernes"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Sabado</ion-label>\n            <ion-input type="text"  [(ngModel)]="sabado"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Domingo</ion-label>\n            <ion-input type="text"  [(ngModel)]="domingo"></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-label color ="primary" stacked>Estatus</ion-label>\n            <ion-input type="text"  [(ngModel)]="estatus"></ion-input>\n        </ion-item>\n        <ion-item>\n          <button ion-button block (click)="register()">Registrar</button>\n        </ion-item>\n    </div>\n  </ion-content>\n  '/*ion-inline-end:"D:\Documents\Ionic\LucernaHH\Rateme-master\src\pages\create-cliente\create-cliente.html"*/,
+            selector: 'page-createcompany',template:/*ion-inline-start:"D:\Documents\Ionic\LucernaHH\Rateme-master\src\pages\createcompany\createcompany.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Captura nota TEST</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <div>\n    <ion-item>\n      <ion-label color ="primary" stacked>NV_NOTA</ion-label>\n      <ion-input type="text" [(ngModel)]="NV_NOTA"></ion-input>\n    </ion-item>\n    <ion-item>\n        <ion-label color ="primary" stacked>NV_CLIENTE</ion-label>\n        <ion-input type="text"[(ngModel)]="NV_CLIENTE"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label color ="primary" stacked>NV_RAZON_SOCIAL</ion-label>\n          <ion-input type="text" [(ngModel)]="NV_RAZON_SOCIAL"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label color ="primary" stacked>NV_NOMBRE_CLIENTE</ion-label>\n          <ion-input type="text" [(ngModel)]="NV_NOMBRE_CLIENTE"></ion-input>\n      </ion-item>\n      <ion-item>\n           <ion-label color ="primary" stacked>NV_FECHA</ion-label>\n           <ion-input type="text"  [(ngModel)]="NV_FECHA"></ion-input>\n      </ion-item>\n      <ion-item>\n          <ion-label color ="primary" stacked>NV_RUTA</ion-label>\n          <ion-input type="text"  [(ngModel)]="NV_RUTA"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-label color ="primary" stacked>NV_TIPO_VENTA</ion-label>\n        <ion-input type="text"  [(ngModel)]="NV_TIPO_VENTA"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label color ="primary" stacked>NV_SUBTOTAL</ion-label>\n      <ion-input type="text"  [(ngModel)]="NV_SUBTOTAL"></ion-input>\n  </ion-item>\n  <ion-item>\n    <ion-label color ="primary" stacked>NV_IVA</ion-label>\n    <ion-input type="text"  [(ngModel)]="NV_IVA"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-label color ="primary" stacked>NV_IEPS</ion-label>\n  <ion-input type="text"  [(ngModel)]="NV_IEPS"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-label color ="primary" stacked>NV_RECONOCIMIENTO</ion-label>\n  <ion-input type="text"  [(ngModel)]="NV_RECONOCIMIENTO"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-label color ="primary" stacked>NV_TOTAL</ion-label>\n  <ion-input type="text"  [(ngModel)]="NV_TOTAL"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-label color ="primary" stacked>NV_CORPO_CLIENTE</ion-label>\n  <ion-input type="text"  [(ngModel)]="NV_CORPO_CLIENTE"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-label color ="primary" stacked>NV_ESTATUS_NOTA</ion-label>\n  <ion-input type="text"  [(ngModel)]="NV_ESTATUS_NOTA"></ion-input>\n</ion-item>\n<ion-item>\n  <ion-label color ="primary" stacked>NV_KILOLITROS_VENDIDOS</ion-label>\n  <ion-input type="text"  [(ngModel)]="NV_KILOLITROS_VENDIDOS"></ion-input>\n</ion-item>\n      <ion-item>\n        <button ion-button block (click)="register()">Registrar</button>\n      </ion-item>\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Documents\Ionic\LucernaHH\Rateme-master\src\pages\createcompany\createcompany.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_cliente_cliente__["a" /* ClienteProvider */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_nota_venta_nota_venta__["a" /* NotaVentaProvider */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */]])
-    ], CreateClientePage);
-    return CreateClientePage;
+    ], CreatecompanyPage);
+    return CreatecompanyPage;
 }());
 
-//# sourceMappingURL=create-cliente.js.map
+//# sourceMappingURL=createcompany.js.map
 
 /***/ })
 

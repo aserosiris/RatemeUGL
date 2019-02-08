@@ -24,6 +24,7 @@
     "@ionic-native/core": "~4.17.0",
     "@ionic-native/splash-screen": "~4.17.0",
     "@ionic-native/sqlite": "^4.18.0",
+    "@ionic-native/sqlite-porter": "^5.0.0",
     "@ionic-native/status-bar": "~4.17.0",
     "@ionic-native/toast": "^4.18.0",
     "@ionic/storage": "^2.2.0",
@@ -44,6 +45,7 @@
     "ionicons": "3.0.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
+    "uk.co.workingedge.cordova.plugin.sqliteporter": "1.1.0",
     "zone.js": "0.8.26"
   },
   "devDependencies": {
@@ -64,7 +66,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-x-toast": {},
-      "cordova-plugin-bluetooth-serial": {}
+      "cordova-plugin-bluetooth-serial": {},
+      "uk.co.workingedge.cordova.plugin.sqliteporter": {}
     },
     "platforms": [
       "android",

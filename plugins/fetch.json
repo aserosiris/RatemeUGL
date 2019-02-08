@@ -72,5 +72,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "uk.co.workingedge.cordova.plugin.sqliteporter": {
+    "source": {
+      "type": "registry",
+      "id": "uk.co.workingedge.cordova.plugin.sqliteporter@1.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
