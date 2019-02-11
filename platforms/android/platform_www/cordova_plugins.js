@@ -71,6 +71,15 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.sqlitePorter"
     ]
+  },
+  {
+    "id": "cordova-plugin-sqlserver.plugin",
+    "file": "plugins/cordova-plugin-sqlserver/www/plugin.js",
+    "pluginId": "cordova-plugin-sqlserver",
+    "clobbers": [
+      "SqlServer"
+    ],
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -85,7 +94,8 @@ module.exports.metadata =
   "cordova-plugin-ionic-keyboard": "2.1.3",
   "cordova-sqlite-storage": "2.6.0",
   "cordova-plugin-x-toast": "2.7.2",
-  "uk.co.workingedge.cordova.plugin.sqliteporter": "1.1.0"
+  "uk.co.workingedge.cordova.plugin.sqliteporter": "1.1.0",
+  "cordova-plugin-sqlserver": "1.0.0"
 };
 // BOTTOM OF METADATA
 });

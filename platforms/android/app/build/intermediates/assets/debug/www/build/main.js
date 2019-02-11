@@ -1,4 +1,4 @@
-webpackJsonp([16],{
+webpackJsonp([17],{
 
 /***/ 117:
 /***/ (function(module, exports) {
@@ -22,67 +22,71 @@ webpackEmptyAsyncContext.id = 117;
 
 var map = {
 	"../pages/carrito-vt/carrito-vt.module": [
+		301,
+		15
+	],
+	"../pages/clientes/clientes.module": [
 		302,
 		14
 	],
-	"../pages/clientes/clientes.module": [
-		301,
-		13
-	],
 	"../pages/companies/companies.module": [
 		303,
-		12
+		13
 	],
 	"../pages/create-cliente/create-cliente.module": [
 		304,
-		11
+		12
 	],
 	"../pages/createcompany/createcompany.module": [
 		305,
-		10
+		11
 	],
 	"../pages/createproducto/createproducto.module": [
 		306,
-		9
+		10
 	],
 	"../pages/descarga-listas/descarga-listas.module": [
+		307,
+		9
+	],
+	"../pages/home/home.module": [
 		308,
 		8
 	],
-	"../pages/home/home.module": [
-		307,
+	"../pages/inicio-dia/inicio-dia.module": [
+		310,
 		7
 	],
-	"../pages/inicio-dia/inicio-dia.module": [
-		309,
+	"../pages/login/login.module": [
+		311,
 		6
 	],
-	"../pages/login/login.module": [
-		310,
+	"../pages/modal-promos/modal-promos.module": [
+		309,
 		5
 	],
-	"../pages/modal-promos/modal-promos.module": [
-		311,
+	"../pages/modal/modal.module": [
+		312,
 		4
 	],
-	"../pages/modal/modal.module": [
-		313,
-		3
-	],
 	"../pages/printer-list-modal/printer-list-modal.module": [
-		312,
-		15
+		313,
+		16
 	],
 	"../pages/productos/productos.module": [
 		314,
-		2
+		3
 	],
 	"../pages/register/register.module": [
 		315,
+		2
+	],
+	"../pages/sqltest/sqltest.module": [
+		316,
 		1
 	],
 	"../pages/ticket/ticket.module": [
-		316,
+		317,
 		0
 	]
 };
@@ -1199,21 +1203,22 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6_angular_svg_round_progressbar__["RoundProgressModule"],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/clientes/clientes.module#ClientesPageModule', name: 'ClientesPage', segment: 'clientes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/carrito-vt/carrito-vt.module#CarritoVtPageModule', name: 'CarritoVtPage', segment: 'carrito-vt', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/clientes/clientes.module#ClientesPageModule', name: 'ClientesPage', segment: 'clientes', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/companies/companies.module#CompaniesPageModule', name: 'CompaniesPage', segment: 'companies', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/create-cliente/create-cliente.module#CreateClientePageModule', name: 'CreateClientePage', segment: 'create-cliente', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/createcompany/createcompany.module#CreatecompanyPageModule', name: 'CreatecompanyPage', segment: 'createcompany', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/createproducto/createproducto.module#CreateproductoPageModule', name: 'CreateproductoPage', segment: 'createproducto', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/descarga-listas/descarga-listas.module#DescargaListasPageModule', name: 'DescargaListasPage', segment: 'descarga-listas', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modal-promos/modal-promos.module#ModalPromosPageModule', name: 'ModalPromosPage', segment: 'modal-promos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio-dia/inicio-dia.module#InicioDiaPageModule', name: 'InicioDiaPage', segment: 'inicio-dia', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modal-promos/modal-promos.module#ModalPromosPageModule', name: 'ModalPromosPage', segment: 'modal-promos', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/printer-list-modal/printer-list-modal.module#PrinterListModalPageModule', name: 'PrinterListModalPage', segment: 'printer-list-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modal/modal.module#ModalPageModule', name: 'ModalPage', segment: 'modal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/printer-list-modal/printer-list-modal.module#PrinterListModalPageModule', name: 'PrinterListModalPage', segment: 'printer-list-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/productos/productos.module#ProductosPageModule', name: 'ProductosPage', segment: 'productos', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/sqltest/sqltest.module#SqltestPageModule', name: 'SqltestPage', segment: 'sqltest', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ticket/ticket.module#TicketPageModule', name: 'TicketPage', segment: 'ticket', priority: 'low', defaultHistory: [] }
                     ]
                 }),

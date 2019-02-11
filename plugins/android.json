@@ -37,6 +37,9 @@
     },
     "uk.co.workingedge.cordova.plugin.sqliteporter": {
       "PACKAGE_NAME": "com.LucernaHH.test"
+    },
+    "cordova-plugin-sqlserver": {
+      "PACKAGE_NAME": "com.LucernaHH.test"
     }
   },
   "dependent_plugins": {}

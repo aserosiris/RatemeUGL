@@ -246,25 +246,6 @@ export class DescargaListasPage {
 
 }
 
- //this.insertAssist();
-  // }
-
-
-
-
-
-insertAssist(){
-  this.sqlite.create({
-    name: 'ionicdb.db',
-    location: 'default'
-  }).then((db: SQLiteObject) => {
-    this.consulta2 = `INSERT  INTO tb_hh_asistencia  (AS_RUTA,AS_FECHA, AS_NUMERO_VENDEDOR, AS_NOMBRE_VENDEDOR, AS_NUMERO_AYUDANTE, AS_NOMBRE_AYUDANTE, AS_NUMERO_AYUDANTE2, AS_NOMBRE_AYUDANTE2) VALUES (?,?,?,?,?,?,?,?)  `
-    db.executeSql(this.consulta2,[this.rutamail,Date(),this.nombresVendedores[0].EM_NOMBRE,this.nombresVendedores[0].EM_NUMERO,this.nombresVendedores[1].EM_NOMBRE,this.nombresVendedores[1].EM_NUMERO,this.nombresVendedores[2].EM_NOMBRE,this.nombresVendedores[2].EM_NUMERO,])
-    .catch(e => console.log("las cosas se fuero a la shit aqui"));
-  })
-
-}
-
 
   getData(){
    // this.showLoading();

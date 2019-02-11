@@ -85,6 +85,10 @@ export class HomePage {
     });
     
   }
+
+  testSQL(){
+    this.navCtrl.push("SqltestPage");
+  }
    
 
 }

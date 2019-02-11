@@ -24,6 +24,10 @@
     <feature name="Toast">
         <param name="android-package" value="nl.xservices.plugins.Toast" />
     </feature>
+    <feature name="SqlServer">
+        <param name="android-package" value="com.y3k.SqlServer" />
+        <param name="onload" value="true" />
+    </feature>
     <allow-navigation href="http://localhost:8080/*" />
     <feature name="IonicWebView">
         <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView" />

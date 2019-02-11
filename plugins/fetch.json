@@ -80,5 +80,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-sqlserver": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/SergioDosSantos/cordova-plugin-sqlserver.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
